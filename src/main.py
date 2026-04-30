@@ -1,22 +1,16 @@
-from htmlnode import HTMLNode
-from textnode import TextNode, TextType
-
-print("Hello world!")
+from copystatic import sync_static
+from gencontent import generate_pages_recursive
 
 
 def main():
-    test = TextNode("This is some anchor text", TextType.LINK, "https://www.boot.dev")
-    node = TextNode("a", TextType.TEXT)
-    print(test)
-    print(node)
+    source_path = "./static"
+    destination_path = "./public"
+    template_path = "./template.html"
+    content_path = "./content"
 
-    test_prop = {
-        "href": "https://www.google.com",
-        "target": "_blank",
-    }
-    htmlnode = HTMLNode("a", "hello world", None, test_prop)
-    # repr(htmlnode)
-    htmlnode.props_to_html()
+    sync_static(source_path, destination_path)
+    print("Generating html page")
+    generate_pages_recursive(content_path, template_path, destination_path)
 
 
 main()

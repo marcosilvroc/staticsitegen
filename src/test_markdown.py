@@ -1,6 +1,6 @@
 import unittest
 
-from md_blocks import (
+from markdown import (
     BlockType,
     block_to_block_type,
     extract_markdown_images,
